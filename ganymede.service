@@ -1,0 +1,15 @@
+[Unit]
+Description=Ganymede Twitch Recorder
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+Restart=always
+WorkingDirectory=/home/ubuntu/ganymede
+User=ubuntu
+ExecStart=/bin/sudo /usr/bin/docker compose -f docker-compose.yml up
+ExecStop=/bin/sudo /usr/bin/docker compose -f docker-compose.yml down
+
+[Install]
+WantedBy=multi-user.target
